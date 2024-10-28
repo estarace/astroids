@@ -4,6 +4,7 @@ import circleshape
 import player   
 import asteroid
 import asteroidfield
+from sys import exit
 
 def main():
     pygame.init()
@@ -29,6 +30,10 @@ def main():
         dt=(clk.tick(60)/1000)
         for i in updatable:
             i.update(dt)
+        for a in asteroids:
+            if a.check_collision(aKiller):
+                print("Game over!")
+                exit(0)
         for z in drawable:
             z.draw(screen)
         pygame.display.flip()
