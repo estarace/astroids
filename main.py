@@ -37,6 +37,10 @@ def main():
             if a.check_collision(aKiller):
                 print("Game over!")
                 exit(0)
+            for s in shots:
+                if a.check_collision(s):
+                    s.kill()
+                    a.split()
         for z in drawable:
             z.draw(screen)
         pygame.display.flip()
